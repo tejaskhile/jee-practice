@@ -19,28 +19,29 @@ const QuestionCard = ({ id, question, options, answer }: Props) => {
     const correctIndex = options.indexOf(String(answer)) + 1;
 
     return (
-        <div className="bg-white p-5 rounded">
-            <p className="font-medium text-lg">
+        <div className="bg-white p-4 md:p-5 rounded shadow-sm">
+            <p className="font-medium text-base md:text-lg break-words">
                 {id}. {question}
             </p>
 
-            <ul className="mt-3 space-y-2 border-2 p-4 border-gray-200 rounded-xl">
+            <ul className="mt-3 space-y-2 border-2 p-3 md:p-4 border-gray-200 rounded-xl">
                 {options.map((opt, i) => (
                     <li
                         key={i}
                         onClick={() => handleSelect(opt)}
-                        className={`p-2 rounded cursor-pointer flex items-center gap-2 hover:bg-blue-100
-                            ${selected === opt ? "bg-blue-200" : "border-gray-100"}
-                        `}
+                        className={`p-2 rounded cursor-pointer flex items-center gap-2 hover:bg-blue-50
+                            ${selected === opt ? "bg-blue-100" : "border-gray-100"}
+                            text-sm md:text-base`}
                     >
-                        <span className="font-semibold">{i + 1}.</span> {opt}
+                        <span className="font-semibold">{i + 1}.</span>
+                        <span className="truncate">{opt}</span>
                     </li>
                 ))}
             </ul>
 
             {selected && (
-                <div className="mt-3">
-                    {selected === answer ? (
+                <div className="mt-3 text-sm md:text-base">
+                    {selected === String(answer) ? (
                         <p className="text-green-600 font-semibold">Correct!</p>
                     ) : (
                         <div>
