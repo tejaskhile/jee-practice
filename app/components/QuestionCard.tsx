@@ -20,7 +20,7 @@ const QuestionCard = ({ id, question, options, answer }: Props) => {
 
     return (
         <div className="bg-white p-4 md:p-5 rounded shadow-sm">
-            <p className="font-medium text-base md:text-lg break-words">
+            <p className="font-medium text-base md:text-lg wrap-break-word">
                 {id}. {question}
             </p>
 
